@@ -11,7 +11,7 @@ grid = [
       [0,0,0,0,0,0,0,0,0,0],
   ]
 
-def define_posicoes (linha, coluna, orientacao, tamanho): #define_posicoes(0, 1, "vertical", 3)
+def define_posicoes (linha, coluna, orientacao, tamanho): 
     posicao_final = []
 
     if orientacao == "vertical":
@@ -33,4 +33,3 @@ def define_posicoes (linha, coluna, orientacao, tamanho): #define_posicoes(0, 1,
             j += 1 
 
     return posicao_final
-define_posicoes(0, 1, "vertical", 3) 
