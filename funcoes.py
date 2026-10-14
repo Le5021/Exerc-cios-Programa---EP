@@ -1,3 +1,20 @@
-def define_posicoes (linha, coluna, orientacao, tamanho):
-    
-    
+grid = [
+      [0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0],
+  ]
+
+def define_posicoes (linha, coluna, orientacao, tamanho): 
+
+    grid[linha][coluna]
+    if orientacao == "vertical":
+        i = 0 
+        while i < len(tamanho) - 1:
+            j = 0 
