@@ -1,2 +1,0 @@
-print('Leticia')
-print("Catarina") 
