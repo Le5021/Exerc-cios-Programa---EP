@@ -41,4 +41,4 @@ def preenche_frota (dicionario_frota, nome_navio, linha, coluna, orientacao, tam
     else:
         dicionario_frota[nome_navio] = posicoes
 
-    return dicionario_frota
+    return [dicionario_frota]
