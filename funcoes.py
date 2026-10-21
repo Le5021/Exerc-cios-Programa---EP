@@ -34,7 +34,7 @@ def define_posicoes (linha, coluna, orientacao, tamanho):
 
     return posicao_final
 
-def preenche_frota (dicionario_frota, nome_navio, define_posicoes, linha, coluna, orientacao, tamanho):
+def preenche_frota (dicionario_frota, nome_navio, linha, coluna, orientacao, tamanho):
     posicoes = define_posicoes (linha, coluna, orientacao, tamanho)
     dicionario_frota[nome_navio].append(posicoes)
 
