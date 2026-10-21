@@ -39,3 +39,5 @@ def preenche_frota (dicionario_frota, nome_navio, define_posicoes, linha, coluna
     dicionario_frota[nome_navio] = posicoes
 
     return dicionario_frota
+
+print('oi')
