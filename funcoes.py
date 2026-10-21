@@ -19,7 +19,7 @@ def define_posicoes (linha, coluna, orientacao, tamanho):
         linha_final = linha
         i = 0
         while i < tamanho:
-            linha_final = linha + i +1
+            linha_final = linha + i 
             posicao_final.append([linha_final, coluna_final]) 
             i += 1 
 
@@ -33,11 +33,12 @@ def define_posicoes (linha, coluna, orientacao, tamanho):
             j += 1 
 
     return posicao_final
+
 def preenche_frota (dicionario_frota, nome_navio, linha, coluna, orientacao, tamanho):
     posicoes = define_posicoes (linha, coluna, orientacao, tamanho)
     if nome_navio in dicionario_frota:
         dicionario_frota[nome_navio].append(posicoes)
     else:
-        dicionario_frota[nome_navio] = posicoes
+        dicionario_frota[nome_navio] = [posicoes]
 
     return dicionario_frota
