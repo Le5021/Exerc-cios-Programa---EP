@@ -73,3 +73,13 @@ def faz_jogada (tabuleiro, linha, coluna):
 # coluna = 1
 # resultado = faz_jogada(tabuleiro, linha, coluna)
 # print(resultado)
+
+def posiciona_frota (dicionario_posicoes):
+    tabuleiro_final = [[0] * 10 for _ in range(10)] #criando o tabuleiro
+    for chaves, valor in dicionario_posicoes.items(): #lista 1 do valor
+        for posicoes in valor: #lista 2 do valor
+            for coordenadas in posicoes: #lista 3 do valor
+                tabuleiro_final[coordenadas[0]][coordenadas[1]] = 1 #linha + coluna = 1
+
+    return tabuleiro_final
+
