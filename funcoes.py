@@ -11,6 +11,11 @@ grid = [
       [0,0,0,0,0,0,0,0,0,0],
   ]
 
+# linha = 1
+# coluna = 1
+# orientacao = "vertical"
+# tamanho = 2
+
 def define_posicoes (linha, coluna, orientacao, tamanho): 
     posicao_final = []
 
@@ -34,6 +39,8 @@ def define_posicoes (linha, coluna, orientacao, tamanho):
 
     return posicao_final
 
+posicao_utilizada = define_posicoes (linha, coluna, orientacao, tamanho)
+
 def preenche_frota (dicionario_frota, nome_navio, linha, coluna, orientacao, tamanho):
     posicoes = define_posicoes (linha, coluna, orientacao, tamanho)
     if nome_navio in dicionario_frota:
@@ -42,3 +49,29 @@ def preenche_frota (dicionario_frota, nome_navio, linha, coluna, orientacao, tam
         dicionario_frota[nome_navio] = [posicoes]
 
     return dicionario_frota
+
+tabuleiro = [
+  [0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
+  [0, 1, 0, 0, 0, 1, 1, 1, 1, 0],
+  [0, 1, 0, 1, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 1, 0, 1, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
+  [0, 1, 1, 1, 0, 0, 0, 1, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 1, 0, 0, 0, 0, 1],
+  [0, 1, 1, 0, 0, 0, 0, 0, 0, 0]
+]
+
+def faz_jogada (tabuleiro, linha, coluna):
+    if [linha, coluna] in posicao_utilizada:
+        tabuleiro[linha][coluna] = 'X'
+    else:
+        tabuleiro[linha][coluna] = '-'
+
+    return tabuleiro
+
+# linha = 1
+# coluna = 1
+# resultado = faz_jogada(tabuleiro, linha, coluna)
+# print(resultado)
