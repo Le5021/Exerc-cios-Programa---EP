@@ -39,7 +39,7 @@ def define_posicoes (linha, coluna, orientacao, tamanho):
 
     return posicao_final
 
-posicao_utilizada = define_posicoes (linha, coluna, orientacao, tamanho)
+
 
 def preenche_frota (dicionario_frota, nome_navio, linha, coluna, orientacao, tamanho):
     posicoes = define_posicoes (linha, coluna, orientacao, tamanho)
@@ -50,21 +50,21 @@ def preenche_frota (dicionario_frota, nome_navio, linha, coluna, orientacao, tam
 
     return dicionario_frota
 
-tabuleiro = [
-  [0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
-  [0, 1, 0, 0, 0, 1, 1, 1, 1, 0],
-  [0, 1, 0, 1, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 1, 0, 1, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
-  [0, 1, 1, 1, 0, 0, 0, 1, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 1, 0, 0, 0, 0, 1],
-  [0, 1, 1, 0, 0, 0, 0, 0, 0, 0]
-]
+# tabuleiro = [
+#   [0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
+#   [0, 1, 0, 0, 0, 1, 1, 1, 1, 0],
+#   [0, 1, 0, 1, 0, 0, 0, 0, 0, 0],
+#   [0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
+#   [0, 0, 0, 0, 0, 1, 0, 1, 0, 0],
+#   [0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
+#   [0, 1, 1, 1, 0, 0, 0, 1, 0, 0],
+#   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+#   [0, 0, 0, 0, 1, 0, 0, 0, 0, 1],
+#   [0, 1, 1, 0, 0, 0, 0, 0, 0, 0]
+# ]
 
-def faz_jogada (tabuleiro, linha, coluna):
-    if [linha, coluna] in posicao_utilizada:
+def faz_jogada (tabuleiro, linha, coluna, orientacao, tamanho):
+    if [linha, coluna] in define_posicoes (linha, coluna, orientacao, tamanho):
         tabuleiro[linha][coluna] = 'X'
     else:
         tabuleiro[linha][coluna] = '-'
