@@ -11,10 +11,7 @@ grid = [
       [0,0,0,0,0,0,0,0,0,0],
   ]
 
-# linha = 1
-# coluna = 1
-# orientacao = "vertical"
-# tamanho = 2
+#Questão 1: 
 
 def define_posicoes (linha, coluna, orientacao, tamanho): 
     posicao_final = []
@@ -39,6 +36,9 @@ def define_posicoes (linha, coluna, orientacao, tamanho):
 
     return posicao_final
 
+
+# Questão 2: 
+
 def preenche_frota (dicionario_frota, nome_navio, linha, coluna, orientacao, tamanho):
     posicoes = define_posicoes (linha, coluna, orientacao, tamanho)
     if nome_navio in dicionario_frota:
@@ -47,6 +47,8 @@ def preenche_frota (dicionario_frota, nome_navio, linha, coluna, orientacao, tam
         dicionario_frota[nome_navio] = [posicoes]
 
     return dicionario_frota
+
+# Questão 3: 
 
 # tabuleiro = [
 #   [0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
@@ -74,6 +76,9 @@ def faz_jogada (tabuleiro, linha, coluna):
 # resultado = faz_jogada(tabuleiro, linha, coluna)
 # print(resultado)
 
+
+# Questão 4:
+ 
 def posiciona_frota (dicionario_posicoes):
     tabuleiro_final = [[0] * 10 for _ in range(10)] #criando o tabuleiro
     for chaves, valor in dicionario_posicoes.items(): #lista 1 do valor
@@ -83,3 +88,39 @@ def posiciona_frota (dicionario_posicoes):
 
     return tabuleiro_final
 
+#Questão 5:
+ 
+#tabuleiro = [
+#   [0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
+#   [0, 1, 0, 0, 0, 'X', 'X', 'X', 'X', 0],
+#   [0, 1, 0, 1, 0, 0, 0, 0, 0, 0],
+#   [0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
+#   [0, 0, 0, 0, 0, 1, 0, 1, 0, 0],
+#   [0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
+#   [0, 1, 1, 1, 0, 0, 0, 1, 0, 0],
+#   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+#   [0, 0, 0, 0, 1, 0, 0, 0, 0, 1],
+#   [0, 1, 1, 0, 0, 0, 0, 0, 0, 0]
+# ]
+# resultado = afundados(frota, tabuleiro)
+# print(resultado)
+
+def afundados(frota, tabuleiro): 
+    posicao_atingida = 0 
+    contagem_navios_afundados = 0  
+
+    for chaves, valor in frota.items(): 
+        for posicoes in valor: 
+            for coordenadas in posicoes: 
+                if tabuleiro[coordenadas[0]][coordenadas[1]] == 'X': 
+                    posicao_atingida += 1 
+                
+            if posicao_atingida == len(posicoes):
+                contagem_navios_afundados += 1 
+
+    return contagem_navios_afundados 
+
+
+
+
+    
