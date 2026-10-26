@@ -106,11 +106,11 @@ def posiciona_frota (dicionario_posicoes):
 # print(resultado)
 
 def afundados(frota, tabuleiro): 
-    posicao_atingida = 0 
     contagem_navios_afundados = 0  
 
     for chaves, valor in frota.items(): 
         for posicoes in valor: 
+            posicao_atingida = 0  
             for coordenadas in posicoes: 
                 if tabuleiro[coordenadas[0]][coordenadas[1]] == 'X': 
                     posicao_atingida += 1 
