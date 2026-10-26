@@ -127,10 +127,14 @@ def afundados(frota, tabuleiro):
 def posicao_valida(frota, linha, coluna, orientacao, tamanho):
     posicoes =  define_posicoes (linha, coluna, orientacao, tamanho)
     tabuleiro = posiciona_frota(frota) 
+    contagem_validos = 0 
 
     for coordenadas in posicoes: 
-        if 0 <= coordenadas[0] and coordenadas[0] <= 10 and 0 <= coordenadas[1] and coordenadas[1] <= 10 and coordenadas[0][1] == 0:
-                return True 
+        if 0 <= coordenadas[0] and coordenadas[0] < 10 and 0 <= coordenadas[1] and coordenadas[1] < 10 and tabuleiro[coordenadas[0]][coordenadas[1]] == 0:
+                contagem_validos += 1 
+
+        if contagem_validos == len(posicoes):
+            return True
         
     return False 
 
