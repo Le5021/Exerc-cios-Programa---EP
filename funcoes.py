@@ -138,6 +138,10 @@ def posicao_valida(frota, linha, coluna, orientacao, tamanho):
         
     return False 
 
+#Questão 7: 
+
+#inserir
+
 
     
     
