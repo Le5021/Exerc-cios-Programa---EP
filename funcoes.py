@@ -88,6 +88,7 @@ def posiciona_frota (dicionario_posicoes):
 
     return tabuleiro_final
 
+
 #Questão 5:
  
 #tabuleiro = [
@@ -120,6 +121,22 @@ def afundados(frota, tabuleiro):
 
     return contagem_navios_afundados 
 
+
+#Questão 6: 
+
+def posicao_valida(frota, linha, coluna, orientacao, tamanho):
+    posicoes =  define_posicoes (linha, coluna, orientacao, tamanho)
+    tabuleiro = posiciona_frota(frota) 
+
+    for coordenadas in posicoes: 
+        if 0 <= coordenadas[0] and coordenadas[0] <= 10 and 0 <= coordenadas[1] and coordenadas[1] <= 10 and coordenadas[0][1] == 0:
+                return True 
+        
+    return False 
+
+
+    
+    
 
 
 
