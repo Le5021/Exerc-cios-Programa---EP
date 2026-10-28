@@ -13,11 +13,12 @@ frota = {}
 for NOME, TAMANHO in navios.items(): 
     tamanho_navio = TAMANHO[0]
     quantidade_navio = TAMANHO[1] 
-
-    print(f"Insira as informações referentes ao navio {NOME} que possui tamanho {tamanho_navio}")   
+    
     contagem_navios_validos = 0 
 
-    while contagem_navios_validos < quantidade_navio:  
+    while contagem_navios_validos < quantidade_navio: 
+        
+        print(f"Insira as informações referentes ao navio {NOME} que possui tamanho {tamanho_navio}")    
 
         linha = int(input("Linha: "))
         while linha < 0 or linha > 9: 
@@ -45,10 +46,10 @@ for NOME, TAMANHO in navios.items():
 
         posicoes_validas =  posicao_valida(frota, linha, coluna, orientacao, tamanho_navio)
 
-        if posicoes_validas == True:
+        if posicoes_validas:
             frota = preenche_frota (frota, NOME, linha, coluna, orientacao, tamanho_navio) 
             contagem_navios_validos += 1 
         else: 
              print("Esta posição não está válida!") 
 
-    print(frota) 
+print(frota)  
