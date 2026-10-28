@@ -14,7 +14,7 @@ for NOME, TAMANHO in navios.items():
     tamanho_navio = TAMANHO[0]
     quantidade_navio = TAMANHO[1] 
 
-    mensagem_principal = print(f"Insira as informações referentes ao navio {NOME} que possui tamanho {tamanho_navio}")   
+    print(f"Insira as informações referentes ao navio {NOME} que possui tamanho {tamanho_navio}")   
     contagem_navios_validos = 0 
 
     while contagem_navios_validos < quantidade_navio:  
@@ -32,11 +32,11 @@ for NOME, TAMANHO in navios.items():
         if NOME != "submarino": 
             orientacao = input("[1] Vertical [2] Horizontal > ")
 
-            if orientacao != 1 and orientacao != 2:
+            if orientacao != "1" and orientacao != "2":
                 print("Esta posição não está válida!")
                 orientacao = input("[1] Vertical [2] Horizontal > ") 
             else: 
-                if orientacao == 1: 
+                if orientacao == "1": 
                     orientacao = "vertical"
                 else:
                     orientacao = "horizontal"
