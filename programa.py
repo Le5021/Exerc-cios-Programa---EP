@@ -20,12 +20,12 @@ for NOME, TAMANHO in navios.items():
     while contagem_navios_validos < quantidade_navio:  
 
         linha = int(input("Linha: "))
-        while linha < 0 or linha > 9: #Não colocar para verificar na função "Posições válidas", senão ele só retorna True ou False
+        while linha < 0 and linha > 9: 
             print("Esta posição não está válida!")
             linha = int(input("Linha: ")) 
 
         coluna = int(input("Coluna: "))
-        while coluna < 0 or coluna > 9:
+        while coluna < 0 and coluna > 9:
                 print("Esta posição não está válida!")
                 coluna = int(input("Coluna: ")) 
 
@@ -38,17 +38,13 @@ for NOME, TAMANHO in navios.items():
             else: 
                 if orientacao == "1": 
                     orientacao = "vertical"
-                else:
+                elif orientacao == "2":
                     orientacao = "horizontal"
         else: 
             orientacao = "vertical" 
 
-        posicoes_validas =  define_posicoes (linha, coluna, orientacao, tamanho_navio)
+        posicoes_validas =  define_posicoes(linha, coluna, orientacao, tamanho_navio)
+        frota = preenche_frota (frota, NOME, linha, coluna, orientacao, tamanho_navio) 
+        contagem_navios_validos += 1 
 
-        if posicoes_validas == True: 
-            frota = preenche_frota (frota, NOME, linha, coluna, orientacao, tamanho_navio) 
-            contagem_navios_validos += 1 
-        else: 
-            print("Esta posição não está válida!") 
-
-        print(frota) 
+    print(frota) 
