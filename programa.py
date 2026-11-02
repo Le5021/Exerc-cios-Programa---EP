@@ -119,7 +119,6 @@ while jogando == True:
                 break
         else:
             posicoes_usadas.append(posicao_informada)
-            break
 
     tabuleiro_oponente = faz_jogada (tabuleiro_oponente, ataque_linha, ataque_coluna)
 
