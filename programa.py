@@ -79,8 +79,9 @@ frota_oponente = {
 tabuleiro_oponente = posiciona_frota (frota_oponente)
 tabuleiro_jogador = posiciona_frota (frota)
 
-jogando = True
-while jogando == True:
+posicoes_usadas = []
+
+while True:
     def monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente):
         texto = ''
         texto += '   0  1  2  3  4  5  6  7  8  9         0  1  2  3  4  5  6  7  8  9\n'
@@ -93,9 +94,6 @@ while jogando == True:
         return texto 
 
     print(monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente))
-
-
-    posicoes_usadas = []
 
     while True:
 
@@ -119,6 +117,7 @@ while jogando == True:
                 break
         else:
             posicoes_usadas.append(posicao_informada)
+            break
 
     tabuleiro_oponente = faz_jogada (tabuleiro_oponente, ataque_linha, ataque_coluna)
 
