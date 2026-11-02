@@ -53,7 +53,7 @@ for NOME, TAMANHO in navios.items():
              print("Esta posição não está válida!")  
 
 
-#questão 8
+#Questão 8:
 
 frota_oponente = {
     'porta-aviões': [
@@ -129,4 +129,7 @@ while True:
     if afundados(frota_oponente, tabuleiro_oponente) == frota_quantidade:
         print('Parabéns! Você derrubou todos os navios do seu oponente!')
         break
+
+# Questão 9: 
+
     
