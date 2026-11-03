@@ -1,5 +1,5 @@
 from funcoes import *
-import random 
+from random import randint 
 
 #Questão 7: 
 
@@ -138,12 +138,12 @@ while True:
 
 # Questão 9: 
     else:
-        ataque_linha_op = random.randit(0, 9)
-        ataque_coluna_op = random.randit(0, 9) 
+        ataque_linha_op = randint(0, 9)
+        ataque_coluna_op = randint(0, 9) 
 
-        while ataque_linha_op and ataque_coluna_op not in posicoes_usadas_oponente:
-            ataque_linha_op = random.randit(0, 9)
-            ataque_coluna_op = random.randit(0, 9) 
+        while ataque_linha_op not in posicoes_usadas_oponente and ataque_coluna_op not in posicoes_usadas_oponente:
+            ataque_linha_op = randint(0, 9)
+            ataque_coluna_op = randint(0, 9) 
 
             posicoes_usadas_oponente.append(ataque_linha_op, ataque_coluna_op) 
 
