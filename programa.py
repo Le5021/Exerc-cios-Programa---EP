@@ -140,26 +140,27 @@ while True:
     else:
         ataque_linha_op = randint(0, 9)
         ataque_coluna_op = randint(0, 9) 
-        i = 0 
-
-        while i < len(posicoes_usadas_oponente): 
-            posicoes_op = posicoes_usadas_oponente[i] 
-
-            if posicoes_op[0] == ataque_linha_op and posicoes_op[1] == ataque_coluna_op:
-                ataque_linha_op = randint(0, 9)
-                ataque_coluna_op = randint(0, 9) 
-                i = 0 
-
-            else: 
-                i += 1 
 
         posicao_informada_op = [ataque_linha_op, ataque_coluna_op]
-        posicoes_usadas_oponente.append(posicao_informada_op)
+        
+        for posicoes in posicoes_usadas_oponente: 
+            if posicoes[0] == ataque_linha_op and posicoes[1] == ataque_coluna_op:
+                ataque_linha_op = randint(0, 9)
+                ataque_coluna_op = randint(0, 9) 
 
-        print(f'Seu oponente está atacando na linha {ataque_linha_op} e coluna {ataque_coluna_op}') 
+            else: 
+                posicoes_usadas_oponente.append(posicao_informada_op) 
+                print(f'Seu oponente está atacando na linha {ataque_linha_op} e coluna {ataque_coluna_op}') 
+                break 
+
 
         tabuleiro_jogador = faz_jogada(tabuleiro_jogador, ataque_linha_op, ataque_coluna_op) 
 
-        if afundados(frota, tabuleiro_jogador) == frota:
+        frota_jogador = 0 
+        for valor in frota.values():
+            for lista in valor: 
+                frota_jogador += 1 
+
+        if afundados(frota, tabuleiro_jogador) == frota_jogador: 
             print('Xi! O oponente derrubou toda a sua frota =(') 
             break 
