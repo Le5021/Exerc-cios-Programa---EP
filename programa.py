@@ -1,4 +1,6 @@
 from funcoes import *
+import random 
+
 #Questão 7: 
 
 navios = {
@@ -79,7 +81,10 @@ frota_oponente = {
 tabuleiro_oponente = posiciona_frota (frota_oponente)
 tabuleiro_jogador = posiciona_frota (frota)
 
-posicoes_usadas = []
+posicoes_usadas_jogador = []
+
+# Adição para a Questão 9:
+posicoes_usadas_oponente = [] 
 
 while True:
     def monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente):
@@ -109,17 +114,18 @@ while True:
             print('Coluna inválida!')
             ataque_coluna = int(input('Jogador, qual coluna deseja atacar? '))
 
+
         posicao_informada = [ataque_linha, ataque_coluna]
 
-        for posicoes in posicoes_usadas:
+        for posicoes in posicoes_usadas_jogador:
             if posicoes[0] == ataque_linha and posicoes[1] == ataque_coluna:
                 print('A posição linha', ataque_linha,'e coluna', ataque_coluna,'já foi informada anteriormente!')
                 break
         else:
-            posicoes_usadas.append(posicao_informada)
+            posicoes_usadas_jogador.append(posicao_informada)
             break
 
-    tabuleiro_oponente = faz_jogada (tabuleiro_oponente, ataque_linha, ataque_coluna)
+    tabuleiro_oponente = faz_jogada(tabuleiro_oponente, ataque_linha, ataque_coluna)
 
     frota_quantidade = 0
     for valor in frota_oponente.values():
@@ -131,5 +137,20 @@ while True:
         break
 
 # Questão 9: 
+    else:
+        ataque_linha_op = random.randit(0, 9)
+        ataque_coluna_op = random.randit(0, 9) 
 
-    
+        while ataque_linha_op and ataque_coluna_op not in posicoes_usadas_oponente:
+            ataque_linha_op = random.randit(0, 9)
+            ataque_coluna_op = random.randit(0, 9) 
+
+            posicoes_usadas_oponente.append(ataque_linha_op, ataque_coluna_op) 
+
+            print(f'Seu oponente está atacando na linha {ataque_linha_op} e coluna {ataque_coluna_op}') 
+
+            tabuleiro_jogador = faz_jogada(tabuleiro_jogador, ataque_linha_op, ataque_coluna_op) 
+
+            if afundados(frota_jogador, tabuleiro_jogador) == frota_quantidade:
+                    print('Xi! O oponente derrubou toda a sua frota =(') 
+                    break 
