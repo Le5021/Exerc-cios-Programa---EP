@@ -120,7 +120,7 @@ while True:
         for posicoes in posicoes_usadas_jogador:
             if posicoes[0] == ataque_linha and posicoes[1] == ataque_coluna:
                 print('A posição linha', ataque_linha,'e coluna', ataque_coluna,'já foi informada anteriormente!')
-                break
+                  
         else:
             posicoes_usadas_jogador.append(posicao_informada)
             break
@@ -140,19 +140,26 @@ while True:
     else:
         ataque_linha_op = randint(0, 9)
         ataque_coluna_op = randint(0, 9) 
+        i = 0 
 
-        while ataque_linha_op not in posicoes_usadas_oponente and ataque_coluna_op not in posicoes_usadas_oponente:
-            ataque_linha_op = randint(0, 9)
-            ataque_coluna_op = randint(0, 9) 
+        while i < len(posicoes_usadas_oponente): 
+            posicoes_op = posicoes_usadas_oponente[i] 
 
-            posicao_informada_op = [ataque_linha_op, ataque_coluna_op]
+            if posicoes_op[0] == ataque_linha_op and posicoes_op[1] == ataque_coluna_op:
+                ataque_linha_op = randint(0, 9)
+                ataque_coluna_op = randint(0, 9) 
+                i = 0 
 
-            posicoes_usadas_oponente.append(ataque_linha_op, ataque_coluna_op) 
+            else: 
+                i += 1 
 
-            print(f'Seu oponente está atacando na linha {ataque_linha_op} e coluna {ataque_coluna_op}') 
+        posicao_informada_op = [ataque_linha_op, ataque_coluna_op]
+        posicoes_usadas_oponente.append(posicao_informada_op)
 
-            tabuleiro_jogador = faz_jogada(tabuleiro_jogador, ataque_linha_op, ataque_coluna_op) 
+        print(f'Seu oponente está atacando na linha {ataque_linha_op} e coluna {ataque_coluna_op}') 
 
-            if afundados(frota, tabuleiro_jogador) == frota_quantidade:
-                    print('Xi! O oponente derrubou toda a sua frota =(') 
-                    break 
+        tabuleiro_jogador = faz_jogada(tabuleiro_jogador, ataque_linha_op, ataque_coluna_op) 
+
+        if afundados(frota, tabuleiro_jogador) == frota:
+            print('Xi! O oponente derrubou toda a sua frota =(') 
+            break 
