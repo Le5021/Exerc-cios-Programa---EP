@@ -145,12 +145,14 @@ while True:
             ataque_linha_op = randint(0, 9)
             ataque_coluna_op = randint(0, 9) 
 
+            posicao_informada_op = [ataque_linha_op, ataque_coluna_op]
+
             posicoes_usadas_oponente.append(ataque_linha_op, ataque_coluna_op) 
 
             print(f'Seu oponente está atacando na linha {ataque_linha_op} e coluna {ataque_coluna_op}') 
 
             tabuleiro_jogador = faz_jogada(tabuleiro_jogador, ataque_linha_op, ataque_coluna_op) 
 
-            if afundados(frota_jogador, tabuleiro_jogador) == frota_quantidade:
+            if afundados(frota, tabuleiro_jogador) == frota_quantidade:
                     print('Xi! O oponente derrubou toda a sua frota =(') 
                     break 
