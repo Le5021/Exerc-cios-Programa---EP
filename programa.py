@@ -138,15 +138,15 @@ while True:
 
 # Questão 9: 
     else:
-        ataque_linha_op = randint(0, 9)
-        ataque_coluna_op = randint(0, 9) 
+        while True: 
+            ataque_linha_op = randint(0, 9)
+            ataque_coluna_op = randint(0, 9) 
 
-        posicao_informada_op = [ataque_linha_op, ataque_coluna_op]
+            posicao_informada_op = [ataque_linha_op, ataque_coluna_op]
         
-        for posicoes in posicoes_usadas_oponente: 
-            if posicoes[0] == ataque_linha_op and posicoes[1] == ataque_coluna_op:
-                ataque_linha_op = randint(0, 9)
-                ataque_coluna_op = randint(0, 9) 
+            for posicoes in posicoes_usadas_oponente: 
+                if posicoes[0] == ataque_linha_op and posicoes[1] == ataque_coluna_op:
+                    break 
 
             else: 
                 posicoes_usadas_oponente.append(posicao_informada_op) 
@@ -154,13 +154,13 @@ while True:
                 break 
 
 
-        tabuleiro_jogador = faz_jogada(tabuleiro_jogador, ataque_linha_op, ataque_coluna_op) 
+            tabuleiro_jogador = faz_jogada(tabuleiro_jogador, ataque_linha_op, ataque_coluna_op) 
 
-        frota_jogador = 0 
-        for valor in frota.values():
-            for lista in valor: 
-                frota_jogador += 1 
+            frota_jogador = 0 
+            for valor in frota.values():
+                for lista in valor: 
+                    frota_jogador += 1  
 
-        if afundados(frota, tabuleiro_jogador) == frota_jogador: 
-            print('Xi! O oponente derrubou toda a sua frota =(') 
-            break 
+            if afundados(frota, tabuleiro_jogador) == frota_jogador: 
+                print('Xi! O oponente derrubou toda a sua frota =(') 
+                break 
