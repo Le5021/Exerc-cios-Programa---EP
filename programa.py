@@ -1,5 +1,5 @@
 from funcoes import *
-from random import randint 
+from random import *
 
 #Questão 7: 
 
