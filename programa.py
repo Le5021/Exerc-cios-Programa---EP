@@ -1,6 +1,8 @@
 from funcoes import *
 from random import *
 
+seed(2)
+
 #Questão 7: 
 
 navios = {
@@ -59,27 +61,27 @@ for NOME, TAMANHO in navios.items():
 
 frota_oponente = {
     'porta-aviões': [
-        [[9, 1], [9, 2], [9, 3], [9, 4]]
+        [[1, 5], [1, 6], [1, 7], [1, 8]]
     ],
     'navio-tanque': [
-        [[6, 0], [6, 1], [6, 2]],
-        [[4, 3], [5, 3], [6, 3]]
+        [[6, 1], [6, 2], [6, 3]],
+        [[4, 7], [5, 7], [6, 7]]
     ],
     'contratorpedeiro': [
-        [[1, 6], [1, 7]],
-        [[0, 5], [1, 5]],
-        [[3, 6], [3, 7]]
+        [[1, 1], [2, 1]],
+        [[2, 3], [3, 3]],
+        [[9, 1], [9, 2]]
     ],
     'submarino': [
-        [[2, 7]],
-        [[0, 6]],
-        [[9, 7]],
-        [[7, 6]]
+        [[0, 3]],
+        [[4, 5]],
+        [[8, 9]],
+        [[8, 4]]
     ]
 }
 
-tabuleiro_oponente = posiciona_frota (frota_oponente)
-tabuleiro_jogador = posiciona_frota (frota)
+tabuleiro_oponente = posiciona_frota(frota_oponente)
+tabuleiro_jogador = posiciona_frota(frota)
 
 posicoes_usadas_jogador = []
 
@@ -125,9 +127,13 @@ while True:
 
     posicao_informada = [ataque_linha, ataque_coluna]
 
-    for posicoes in posicoes_usadas_jogador:
-        if posicoes[0] == ataque_linha and posicoes[1] == ataque_coluna:
-            print('A posição linha', ataque_linha,'e coluna', ataque_coluna,'já foi informada anteriormente!')
+    if posicao_informada in posicoes_usadas_jogador:
+        print(
+            'A posição linha', ataque_linha,
+            'e coluna', ataque_coluna,
+            'já foi informada anteriormente!'
+        )
+        continue
                 
     posicoes_usadas_jogador.append(posicao_informada)
 
@@ -138,17 +144,18 @@ while True:
         break
 
 # Questão 9: 
-    
     ataque_linha_op = randint(0, 9)
     ataque_coluna_op = randint(0, 9) 
 
     posicao_informada_op = [ataque_linha_op, ataque_coluna_op]
 
-    for posicoes in posicoes_usadas_oponente: 
-        if posicoes[0] == ataque_linha_op and posicoes[1] == ataque_coluna_op:
-            break 
+    while posicao_informada_op in posicoes_usadas_oponente:
+        ataque_linha_op = randint(0, 9)
+        ataque_coluna_op = randint(0, 9)
+        posicao_informada_op = [ataque_linha_op, ataque_coluna_op]
 
-    posicoes_usadas_oponente.append(posicao_informada_op) 
+    posicoes_usadas_oponente.append(posicao_informada_op)
+
     print(f'Seu oponente está atacando na linha {ataque_linha_op} e coluna {ataque_coluna_op}') 
 
     tabuleiro_jogador = faz_jogada(tabuleiro_jogador, ataque_linha_op, ataque_coluna_op) 
