@@ -8,7 +8,7 @@ navios = {
     "navio-tanque": [3, 2],
     "contratorpedeiro": [2, 3],
     "submarino": [1, 4]
-} 
+}
 
 frota = {}   
 
@@ -86,8 +86,17 @@ posicoes_usadas_jogador = []
 # Adição para a Questão 9:
 posicoes_usadas_oponente = [] 
 
-while True:
-    def monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente):
+frota_quantidade = 0
+for valor in frota_oponente.values():
+    for lista in valor:
+        frota_quantidade += 1
+
+frota_jogador = 0 
+for valor in frota.values():
+    for lista in valor: 
+        frota_jogador += 1  
+
+def monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente):
         texto = ''
         texto += '   0  1  2  3  4  5  6  7  8  9         0  1  2  3  4  5  6  7  8  9\n'
         texto += '_______________________________      _______________________________\n'
@@ -98,69 +107,52 @@ while True:
             texto += f'{linha}| {jogador_info}|     {linha}| {oponente_info}|\n'
         return texto 
 
+while True:
+
     print(monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente))
 
-    while True:
+    ataque_linha = int(input('Jogador, qual linha deseja atacar? '))
 
+    while ataque_linha < 0 or ataque_linha > 9:
+        print('Linha inválida!')
         ataque_linha = int(input('Jogador, qual linha deseja atacar? '))
 
-        while ataque_linha < 0 or ataque_linha > 9:
-            print('Linha inválida!')
-            ataque_linha = int(input('Jogador, qual linha deseja atacar? '))
+    ataque_coluna = int(input('Jogador, qual coluna deseja atacar? '))
 
+    while ataque_coluna < 0 or ataque_coluna > 9:
+        print('Coluna inválida!')
         ataque_coluna = int(input('Jogador, qual coluna deseja atacar? '))
 
-        while ataque_coluna < 0 or ataque_coluna > 9:
-            print('Coluna inválida!')
-            ataque_coluna = int(input('Jogador, qual coluna deseja atacar? '))
+    posicao_informada = [ataque_linha, ataque_coluna]
 
-
-        posicao_informada = [ataque_linha, ataque_coluna]
-
-        for posicoes in posicoes_usadas_jogador:
-            if posicoes[0] == ataque_linha and posicoes[1] == ataque_coluna:
-                print('A posição linha', ataque_linha,'e coluna', ataque_coluna,'já foi informada anteriormente!')
-                  
-        else:
-            posicoes_usadas_jogador.append(posicao_informada)
-            break
+    for posicoes in posicoes_usadas_jogador:
+        if posicoes[0] == ataque_linha and posicoes[1] == ataque_coluna:
+            print('A posição linha', ataque_linha,'e coluna', ataque_coluna,'já foi informada anteriormente!')
+                
+    posicoes_usadas_jogador.append(posicao_informada)
 
     tabuleiro_oponente = faz_jogada(tabuleiro_oponente, ataque_linha, ataque_coluna)
-
-    frota_quantidade = 0
-    for valor in frota_oponente.values():
-        for lista in valor:
-            frota_quantidade += 1
 
     if afundados(frota_oponente, tabuleiro_oponente) == frota_quantidade:
         print('Parabéns! Você derrubou todos os navios do seu oponente!')
         break
 
 # Questão 9: 
-    else:
-        while True: 
-            ataque_linha_op = randint(0, 9)
-            ataque_coluna_op = randint(0, 9) 
+    
+    ataque_linha_op = randint(0, 9)
+    ataque_coluna_op = randint(0, 9) 
 
-            posicao_informada_op = [ataque_linha_op, ataque_coluna_op]
-        
-            for posicoes in posicoes_usadas_oponente: 
-                if posicoes[0] == ataque_linha_op and posicoes[1] == ataque_coluna_op:
-                    break 
+    posicao_informada_op = [ataque_linha_op, ataque_coluna_op]
 
-            else: 
-                posicoes_usadas_oponente.append(posicao_informada_op) 
-                print(f'Seu oponente está atacando na linha {ataque_linha_op} e coluna {ataque_coluna_op}') 
-                break 
+    for posicoes in posicoes_usadas_oponente: 
+        if posicoes[0] == ataque_linha_op and posicoes[1] == ataque_coluna_op:
+            break 
 
+    posicoes_usadas_oponente.append(posicao_informada_op) 
+    print(f'Seu oponente está atacando na linha {ataque_linha_op} e coluna {ataque_coluna_op}') 
 
-            tabuleiro_jogador = faz_jogada(tabuleiro_jogador, ataque_linha_op, ataque_coluna_op) 
+    tabuleiro_jogador = faz_jogada(tabuleiro_jogador, ataque_linha_op, ataque_coluna_op) 
 
-            frota_jogador = 0 
-            for valor in frota.values():
-                for lista in valor: 
-                    frota_jogador += 1  
-
-            if afundados(frota, tabuleiro_jogador) == frota_jogador: 
-                print('Xi! O oponente derrubou toda a sua frota =(') 
-                break 
+    if afundados(frota, tabuleiro_jogador) == frota_jogador: 
+        print('Xi! O oponente derrubou toda a sua frota =(') 
+        break 
